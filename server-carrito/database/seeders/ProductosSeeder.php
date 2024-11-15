@@ -24,14 +24,17 @@ class ProductosSeeder extends Seeder
         $juguetes = Categoria::where('slug', 'juguetes')->first();
 
         // Create products for the category 'Tecnología'
+
+        
         $response = Cashier::stripe()->products->create([
             'name' => 'Laptop HP',
             'description' => 'Laptop HP 15.6" Intel Core i5 8GB RAM 1TB DD',
-            'images' => ['http://localhost:8000/producto/laptop-hp.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 99999,
-            ],
+        ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 99999,
+            'currency' => 'pen',
+            'product' => $response->id,
         ]);
 
         Producto::create([
@@ -43,17 +46,19 @@ class ProductosSeeder extends Seeder
             'stock' => 10,
             'categoria_id' => $tecnologia->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
 
         $response = Cashier::stripe()->products->create([
             'name' => 'Smartphone Samsung',
             'description' => 'Smartphone Samsung Galaxy A12 6.5" 64GB 4GB RAM',
-            'images' => ['http://localhost:8000/producto/smartphone-samsung.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 19999,
-            ],
+        ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 19999,
+            'currency' => 'pen',
+            'product' => $response->id,
         ]);
 
         Producto::create([
@@ -65,16 +70,18 @@ class ProductosSeeder extends Seeder
             'stock' => 20,
             'categoria_id' => $tecnologia->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
         $response = Cashier::stripe()->products->create([
             'name' => 'Smartwatch Apple',
             'description' => 'Smartwatch Apple Watch Series 6 40mm GPS',
-            'images' => ['http://localhost:8000/producto/smartwatch-apple.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 39999,
-            ],
+        ]);
+        
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 39999,
+            'currency' => 'pen',
+            'product' => $response->id,
         ]);
 
         Producto::create([
@@ -86,20 +93,23 @@ class ProductosSeeder extends Seeder
             'stock' => 5,
             'categoria_id' => $tecnologia->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
-
-        $response = Cashier::stripe()->products->create([
-            'name' => 'Tablet Samsung',
-            'description' => 'Tablet Samsung Galaxy Tab A7 10.4" 32GB 3GB RAM',
-            'images' => ['http://localhost:8000/producto/tablet-samsung.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 29999,
-            ],
-        ]);
 
         // Create products for the category 'Hogar'
+
+        $response = Cashier::stripe()->products->create([
+            'name' => 'Sofá',
+            'description' => 'Sofá de 3 plazas',
+        ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 49999,
+            'currency' => 'pen',
+            'product' => $response->id,
+        ]);
+
         Producto::create([
             'nombre' => 'Sofá',
             'descripcion' => 'Sofá de 3 plazas',
@@ -109,16 +119,18 @@ class ProductosSeeder extends Seeder
             'stock' => 3,
             'categoria_id' => $hogar->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
         $response = Cashier::stripe()->products->create([
             'name' => 'Mesa de centro',
             'description' => 'Mesa de centro de madera',
-            'images' => ['http://localhost:8000/producto/mesa-centro.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 9999,
-            ],
+        ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 9999,
+            'currency' => 'pen',
+            'product' => $response->id,
         ]);
 
         Producto::create([
@@ -130,16 +142,18 @@ class ProductosSeeder extends Seeder
             'stock' => 10,
             'categoria_id' => $hogar->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
         $response = Cashier::stripe()->products->create([
             'name' => 'Lámpara',
             'description' => 'Lámpara de pie',
-            'images' => ['http://localhost:8000/producto/lampara.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 4999,
-            ],
+        ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 4999,
+            'currency' => 'pen',
+            'product' => $response->id,
         ]);
 
         Producto::create([
@@ -151,19 +165,22 @@ class ProductosSeeder extends Seeder
             'stock' => 7,
             'categoria_id' => $hogar->id,
             'stripe_product_id' => $response->id,
-        ]);
-
-        $response = Cashier::stripe()->products->create([
-            'name' => 'Cocina',
-            'description' => 'Cocina de gas',
-            'images' => ['http://localhost:8000/producto/cocina.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 79999,
-            ],
+            'stripe_price_id' => $price->id,
         ]);
 
         // Create products for the category 'Deportes'
+
+        $response = Cashier::stripe()->products->create([
+            'name' => 'Bicicleta',
+            'description' => 'Bicicleta de montaña',
+        ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 29999,
+            'currency' => 'pen',
+            'product' => $response->id,
+        ]);
+
         Producto::create([
             'nombre' => 'Bicicleta',
             'descripcion' => 'Bicicleta de montaña',
@@ -173,16 +190,18 @@ class ProductosSeeder extends Seeder
             'stock' => 5,
             'categoria_id' => $deportes->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
         $response = Cashier::stripe()->products->create([
             'name' => 'Balón de fútbol',
             'description' => 'Balón de fútbol profesional',
-            'images' => ['http://localhost:8000/producto/balon-futbol.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 1999,
-            ],
+        ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 1999,
+            'currency' => 'pen',
+            'product' => $response->id,
         ]);
 
         Producto::create([
@@ -194,16 +213,18 @@ class ProductosSeeder extends Seeder
             'stock' => 15,
             'categoria_id' => $deportes->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
         $response = Cashier::stripe()->products->create([
             'name' => 'Raqueta de tenis',
             'description' => 'Raqueta de tenis profesional',
-            'images' => ['http://localhost:8000/producto/raqueta-tenis.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 4999,
-            ],
+        ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 4999,
+            'currency' => 'pen',
+            'product' => $response->id,
         ]);
 
         Producto::create([
@@ -215,6 +236,7 @@ class ProductosSeeder extends Seeder
             'stock' => 10,
             'categoria_id' => $deportes->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
         // Create products for the category 'Ropa'
@@ -222,11 +244,12 @@ class ProductosSeeder extends Seeder
         $response = Cashier::stripe()->products->create([
             'name' => 'Camisa',
             'description' => 'Camisa de vestir',
-            'images' => ['http://localhost:8000/producto/camisa.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 2999,
-            ],
+        ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 2999,
+            'currency' => 'pen',
+            'product' => $response->id,
         ]);
 
         Producto::create([
@@ -238,18 +261,19 @@ class ProductosSeeder extends Seeder
             'stock' => 20,
             'categoria_id' => $ropa->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
         $response = Cashier::stripe()->products->create([
             'name' => 'Pantalón',
             'description' => 'Pantalón de mezclilla',
-            'images' => ['http://localhost:8000/producto/pantalon.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 3999,
-            ],
         ]);
 
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 3999,
+            'currency' => 'pen',
+            'product' => $response->id,
+        ]);
 
         Producto::create([
             'nombre' => 'Pantalón',
@@ -260,16 +284,12 @@ class ProductosSeeder extends Seeder
             'stock' => 15,
             'categoria_id' => $ropa->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
         $response = Cashier::stripe()->products->create([
             'name' => 'Zapatos',
             'description' => 'Zapatos de vestir',
-            'images' => ['http://localhost:8000/producto/zapatos.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 5999,
-            ],
         ]);
 
         Producto::create([
@@ -281,18 +301,21 @@ class ProductosSeeder extends Seeder
             'stock' => 10,
             'categoria_id' => $ropa->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
         // Create products for the category 'Juguetes'
         $response = Cashier::stripe()->products->create([
             'name' => 'Muñeca',
             'description' => 'Muñeca Barbie',
-            'images' => ['http://localhost:8000/producto/muneca.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 1999,
-            ],
         ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 1999,
+            'currency' => 'pen',
+            'product' => $response->id,
+        ]);
+
         Producto::create([
             'nombre' => 'Muñeca',
             'descripcion' => 'Muñeca Barbie',
@@ -302,16 +325,18 @@ class ProductosSeeder extends Seeder
             'stock' => 10,
             'categoria_id' => $juguetes->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
 
         $response = Cashier::stripe()->products->create([
             'name' => 'Carro de control remoto',
             'description' => 'Carro de control remoto',
-            'images' => ['http://localhost:8000/producto/carro-control-remoto.jpg'],
-            'default_price_data' => [
-                'currency' => 'pen',
-                'unit_amount_decimal' => 2999,
-            ],
+        ]);
+
+        $price = Cashier::stripe()->prices->create([
+            'unit_amount' => 2999,
+            'currency' => 'pen',
+            'product' => $response->id,
         ]);
 
         Producto::create([
@@ -323,6 +348,7 @@ class ProductosSeeder extends Seeder
             'stock' => 5,
             'categoria_id' => $juguetes->id,
             'stripe_product_id' => $response->id,
+            'stripe_price_id' => $price->id,
         ]);
     }
 }
