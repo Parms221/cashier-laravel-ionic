@@ -2,6 +2,11 @@
 
 Este proyecto es una aplicación de ventas que utiliza Ionic para el frontend y Laravel para el backend. Además, se integra con Stripe a través de Laravel Cashier para gestionar los pagos.
 
+## Tutorial
+
+Puedes encontrar un tutorial detallado de cómo se hizo el proyecto en el siguiente enlace de Notion:
+[Enlace al tutorial en Notion](https://acidic-chess-e8a.notion.site/Pasarela-de-pagos-13fa364fd2c38034b2c4d2dded385afd)
+
 ## Tecnologías Utilizadas
 
 - **Ionic**: Framework para el desarrollo de aplicaciones móviles híbridas.
