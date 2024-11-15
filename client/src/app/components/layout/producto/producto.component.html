@@ -1,0 +1,18 @@
+
+<div class="producto">
+  <div class="img-container">
+    <img [src]="producto.imagen" alt="">
+    <span class="categoria">
+      {{ producto.categoria.nombre }} 
+    </span>
+  </div>
+  <h3>
+    {{ producto.nombre }}
+  </h3>
+  <p class="description">
+    {{ producto.descripcion }}
+  </p>
+  <p class="price">
+    S/.{{producto.precio}}
+  </p>
+</div>

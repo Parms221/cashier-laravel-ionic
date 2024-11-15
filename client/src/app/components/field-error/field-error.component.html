@@ -1,0 +1,10 @@
+<!-- <div *ngIf="field?.invalid && field?.touched">
+  <ion-text color="danger" *ngFor="let validation of validations[fieldName]">
+    <p *ngIf="field?.hasError(validation.type)">{{ validation.message }}</p>
+  </ion-text>
+</div> -->
+<div *ngIf="field?.invalid && field?.touched && getErrorMessasge() !== null">
+  <ion-text color="danger">
+    <p>{{ getErrorMessasge() }}</p>
+  </ion-text>
+</div>

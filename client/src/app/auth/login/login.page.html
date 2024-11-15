@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true">
+  <div style="display: flex; flex-direction: column; justify-content: center; height: 100%; max-width: 500px;">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Compras</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <div class="flex-this" style="width: 100%;">
+      <div class="container">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <ion-item>
+            <ion-input label="Correo" labelPlacement="floating" type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <app-field-error [field]="loginForm.get('email')" fieldName="email" [validations]="validations" [serverError]="serverError" />
+
+
+          <ion-item>
+            <ion-input label="Contraseña" labelPlacement="floating" type="password"
+              formControlName="password"></ion-input>
+          </ion-item>
+          <app-field-error [field]="loginForm.get('password')" fieldName="password" [validations]="validations" [serverError]="serverError" />
+
+          <div style="padding: 0px 10px; margin-top: 10px;">
+            <app-error *ngIf="serverError" [errorResponse]="serverError" />
+            <ion-button style="width: 100%;" type="submit"
+              [disabled]="loginForm.invalid || isSubmitting">Login</ion-button>
+          </div>
+        </form>
+
+        <ion-text color="primary">
+          <a routerLink="/auth/register" style="margin-top: 10px; display: block;">
+            Registrarse
+          </a>
+        </ion-text>
+
+
+      </div>
+    </div>
+
+  </div>
+</ion-content>

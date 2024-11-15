@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense" style="background-color: #e2e2e2e2;">
+    <ion-toolbar>
+      <ion-title size="large">Carrito</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <ul>
+      <li *ngFor="let det of detalle">
+        <app-carrito-item [detalle]="det"></app-carrito-item> 
+      </li>
+    </ul>
+
+    <div class="pay-button-container">
+      <div class="pay-button">
+        <p class="price">
+          S/{{total().toFixed(2)}}
+        </p>
+        <ion-button (click)="pagar()"
+          style="flex: 1;"
+          expand="block" 
+          [disabled]="status === 'loading' || total() === 0"
+        >Pagar</ion-button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

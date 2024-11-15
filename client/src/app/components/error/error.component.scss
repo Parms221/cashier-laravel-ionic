@@ -1,0 +1,11 @@
+.error-containter {
+  background-color: var(--destroy);
+  padding: 10px 15px;
+  border-radius: 10px;
+
+  & p {
+    margin: 0;
+    color: white;
+    font-weight: 500;
+  }
+}

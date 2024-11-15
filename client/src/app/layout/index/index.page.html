@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>index</ion-title>
+    <ion-buttons slot="end">
+      <app-carrito-button />
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Inicio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <app-categorias-select />
+    <div>
+      <app-productos-list />
+    </div>
+  </div>
+</ion-content>

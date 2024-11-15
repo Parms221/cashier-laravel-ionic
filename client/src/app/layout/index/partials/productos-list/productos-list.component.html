@@ -1,0 +1,15 @@
+@switch (status) {
+  @case ("loading") {
+    <p>Cargando</p>
+  }
+  @case ("error") {
+    <p>Error</p>
+  }
+  @default {
+    <div class="productos-list">
+      <a (click)="productRedirect(producto)" *ngFor="let producto of productos" class="productos-list__item" >
+        <app-producto [producto]="producto" />
+      </a>
+    </div>
+  }
+}

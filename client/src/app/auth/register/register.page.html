@@ -1,0 +1,51 @@
+<ion-content [fullscreen]="true">
+  <div style="display: flex; flex-direction: column; justify-content: center; height: 100%; max-width: 500px;">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Register</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <div class="flex-this" style="width: 100%;">
+      <div class="container">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <ion-item>
+            <ion-input label="Usuario" labelPlacement="floating" type="name" formControlName="name"></ion-input>
+          </ion-item>
+          <app-field-error [field]="registerForm.get('name')" fieldName="name" [validations]="validations"
+            [serverError]="serverError" />
+
+          <ion-item>
+            <ion-input label="Correo" labelPlacement="floating" type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <app-field-error [field]="registerForm.get('email')" fieldName="email" [validations]="validations"
+            [serverError]="serverError" />
+
+
+          <ion-item>
+            <ion-input label="Contraseña" labelPlacement="floating" type="password"
+              formControlName="password"></ion-input>
+          </ion-item>
+          <app-field-error [field]="registerForm.get('password')" fieldName="password" [validations]="validations"
+            [serverError]="serverError" />
+
+
+          <ion-item>
+            <ion-input label="Repita contraseña" labelPlacement="floating" type="password"
+              formControlName="confirm_password"></ion-input>
+          </ion-item>
+          <app-field-error [field]="registerForm.get('confirm_password')" fieldName="confirm_password" [validations]="validations"
+            [serverError]="serverError" />
+
+          <div style="padding: 0px 10px; margin-top: 10px;">
+            <app-error *ngIf="serverError" [errorResponse]="serverError" />
+            <ion-button style="width: 100%;" type="submit"
+              [disabled]="registerForm.invalid || isSubmitting">Login</ion-button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</ion-content>

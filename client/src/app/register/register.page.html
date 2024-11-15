@@ -1,0 +1,115 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="flex-center">
+    <ion-card style="width: 500px;">
+      <ion-card-header>
+        <ion-card-title>Registrarse</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="formRegister">
+          <div class="form-input">
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-item>
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input
+                formControlName="name"
+                name="name"
+                type="text"
+              ></ion-input>
+            </ion-item>
+            <ng-container
+              *ngFor="let validation of
+validation_messages.name"
+            >
+              <small
+                class="error-message"
+                *ngIf="formRegister.get('name')?.hasError(validation.type) &&
+(formRegister.get('name')?.dirty || formRegister.get('name')?.touched)"
+              >
+                {{ validation.message }}</small
+              >
+            </ng-container>
+          </div>
+          <div class="form-input">
+            <ion-icon name="mail-outline"></ion-icon>
+            <ion-item>
+              <ion-label position="floating">Correo</ion-label>
+              <ion-input
+                formControlName="email"
+                name="email"
+                type="email"
+              ></ion-input>
+            </ion-item>
+            <ng-container
+              *ngFor="let validation of
+validation_messages.email"
+            >
+              <small
+                class="error-message"
+                *ngIf="formRegister.get('email')?.hasError(validation.type) &&
+(formRegister.get('email')?.dirty || formRegister.get('email')?.touched)"
+              >
+                {{ validation.message }}</small
+              >
+            </ng-container>
+          </div>
+          <div class="form-input">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input
+                formControlName="password"
+                name="password"
+                type="password"
+              ></ion-input>
+              <ng-container
+                *ngFor="let validation of
+validation_messages.password"
+              >
+                <small
+                  class="error-message"
+                  *ngIf="formRegister.get('password')?.hasError(validation.type) &&
+(formRegister.get('password')?.dirty || formRegister.get('password')?.touched)"
+                >
+                  {{ validation.message }}</small
+                >
+              </ng-container>
+            </ion-item>
+          </div>
+          <div class="form-input">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-item>
+              <ion-label position="floating">Confirmar password</ion-label>
+              <ion-input
+                formControlName="confirmPassword"
+                name="confirmPassword"
+                type="password"
+              ></ion-input>
+              <ng-container
+                *ngFor="let validation of
+validation_messages.confirmPassword"
+              >
+                <small
+                  class="error-message"
+                  *ngIf="formRegister.get('confirmPassword')?.hasError(validation.type) &&
+(formRegister.get('confirmPassword')?.dirty || formRegister.get('confirmPassword')?.touched) 
+"
+                >
+                  {{ validation.message }}</small
+                >
+              </ng-container>
+            </ion-item>
+          </div>
+        </form>
+        <ion-button color="danger" expand="block" (click)="register()">
+          Registrarse
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,16 @@
+
+<div class="container">
+  <ul>
+    <li [className]="categoriaSeleccionada === 'todos' ? 'active' : ''" (click)="selectCategoria('todos')">
+      <p>
+        Todos
+      </p>
+    </li>
+    <li *ngFor="let categoria of categorias" [className]="categoriaSeleccionada === categoria.slug ? 'active' : ''" (click)="selectCategoria(categoria.slug)">
+      <p>
+        {{ categoria.nombre }}
+      </p>
+    </li>
+  </ul>
+</div>
+

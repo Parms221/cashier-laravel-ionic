@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="img-container">
+    <img [src]="detalle.producto.imagen" alt="">
+  </div>
+  <div class="details">
+    <div class="something">
+      <div>
+        <h4>
+          {{detalle.producto.nombre}}
+        </h4>
+        <p class="category">
+          {{detalle.producto.categoria.nombre}}
+        </p>
+        <p class="price">
+          S/{{detalle.producto.precio}} c/u
+        </p>
+      </div>
+      <button class="trash-icon" (click)="eliminar()">
+        <ion-icon name="trash-outline"></ion-icon>
+      </button>
+    </div>
+
+    <div class="something" style="margin-top: auto;">
+      <p class="total">
+        S/{{ (detalle.cantidad * +detalle.producto.precio).toFixed(2) }}
+      </p>
+
+
+      <div class="contador">
+        <button class="remove" (click)="disminuir()" [disabled]="detalle.cantidad === 1">
+          <ion-icon name="remove"></ion-icon>
+        </button>
+        <span>{{detalle.cantidad}}</span>
+        <button class="add" (click)="aumentar()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
